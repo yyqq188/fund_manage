@@ -5,7 +5,7 @@
 /.idea/
 /conf/
 deploy.sh
-/html_data/
+/raw_data/
 
 .classpath
 .project
