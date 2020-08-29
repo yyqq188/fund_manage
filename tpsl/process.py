@@ -33,8 +33,9 @@ class Process(object):
     def min_max_list(self):
         min_tp = self.df["min_tp"].min()
         max_tp = self.df["max_tp"].max()
-        min_list = (np.arange(10) + 1) * 0.1 * min_tp
-        max_list = (np.arange(10) + 1) * 0.1 * max_tp
+        time_num =10
+        min_list = (np.arange(time_num) + 1) * 1/time_num * min_tp
+        max_list = (np.arange(time_num) + 1) * 1/time_num * max_tp
 
         return min_list,max_list
 
@@ -57,13 +58,13 @@ class Process(object):
         max_min_union = np.union1d(some_max_tp["id"].values, some_min_tp["id"].values)
         non_tp = self.df[self.df["id"].isin(np.setdiff1d(self.df["id"].values, max_min_union))]["cur_tp"].sum()
         # print(non_tp)
-        print("total is ", len(only_max_tp) * max_tp_num + len(only_min_tp) * min_tp_num + non_tp)
-        total = len(only_max_tp) * max_tp_num + len(only_min_tp) * min_tp_num + non_tp
+        total = len(only_max_tp) * max_tp_num + len(only_min_tp) * min_tp_num + int(non_tp)
+        print("total is ", len(only_max_tp) * max_tp_num, len(only_min_tp) * min_tp_num, int(non_tp),total)
         return total
 if __name__ == '__main__':
-
+    print("EURCAD_1h")
     base_dir = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), "raw_data")
-    raw_file_path = os.path.join(base_dir, "EOSUSDT_30m")
+    raw_file_path = os.path.join(base_dir, "EURCAD_1h")
     rp = RawParser(raw_file_path)
     min_max_list = []
     for line in rp.process_raw().split("||"):

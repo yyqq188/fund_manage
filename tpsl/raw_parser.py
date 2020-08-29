@@ -41,7 +41,7 @@ class RawParser(object):
 
 if __name__ == '__main__':
     base_dir = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))),"raw_data")
-    raw_file_path = os.path.join(base_dir,"EOSUSDT_30m")
+    raw_file_path = os.path.join(base_dir,"EURCAD_1h")
     rp = RawParser(raw_file_path)
     # print(rp.process_raw())
     for line in rp.process_raw().split("||"):
