@@ -23,12 +23,12 @@ class RawParser(object):
         min_status = "||".join(line_total).replace(",,",",").replace(",%","%")
         return min_status
 
-    #57,多头进场,buy,2020-08-05,19:30,3.0602,10000,304.00,9909.00,398.00,602.00,多头出场,sell,2020-08-06,06:30,3.0298,
-    # 生成利润 最大利润 最小利润
+
     def max_min_profit(self,line_record):
         if not line_record:
             print("bb")
         records = line_record.split(",")
+        index = records[0]
         in_price = records[5]
         out_price = records[15]
         cur_tp =records[7]
@@ -37,7 +37,7 @@ class RawParser(object):
         if out_price < in_price:
             cur_tp = "-"+cur_tp
 
-        return cur_tp,max_tp,min_tp
+        return index,cur_tp,max_tp,min_tp
 
 if __name__ == '__main__':
     base_dir = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))),"raw_data")
@@ -45,6 +45,6 @@ if __name__ == '__main__':
     rp = RawParser(raw_file_path)
     # print(rp.process_raw())
     for line in rp.process_raw().split("||"):
-        print(line)
+        # print(line)
         print(rp.max_min_profit(line))
 
