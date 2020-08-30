@@ -14,4 +14,6 @@
 本程序是处于第二步.
 ---
 #### 执行的命令是
-`python3 parse_html.py EOSUSDT_30m.html`
+`python3 main.py EOSUSDT_30m`
+---
+**本程序在本地执行,同步到服务器的redis中,不需要部署程序到服务器**

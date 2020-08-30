@@ -3,11 +3,13 @@ from conf.redisconf import redisconf
 import os
 from tpsl.raw_parser import RawParser
 from tpsl.process import Process
+import sys
 
 pool = redis.ConnectionPool(host=redisconf['host'], port=redisconf['port'], db=10,password=redisconf['password'])
 my_redis = redis.Redis(connection_pool=pool)
 
-symbol = "EURCAD_1h" #这是文件的文件名
+# symbol = "EURCAD_1h" #这是文件的文件名
+symbol = sys.argv[1]
 print(symbol)
 base_dir = os.path.dirname(os.path.abspath(__file__))
 raw_file_path = os.path.join(base_dir, "raw_data",symbol)
