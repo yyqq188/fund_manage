@@ -2,6 +2,7 @@
 /.settings/
 /.vscode/
 /bin/
+/__pycache__/
 /.idea/
 /conf/
 deploy.sh
