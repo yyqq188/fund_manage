@@ -27,7 +27,8 @@ class Process(object):
                     maxnum = total
 
         print("------------------------------------")
-        print(maxnum,kv[maxnum])
+        print(maxnum,kv[maxnum][0],kv[maxnum][1])
+        return maxnum,kv[maxnum][0],kv[maxnum][1]
 
 
     def min_max_list(self):
@@ -59,7 +60,7 @@ class Process(object):
         non_tp = self.df[self.df["id"].isin(np.setdiff1d(self.df["id"].values, max_min_union))]["cur_tp"].sum()
         # print(non_tp)
         total = len(only_max_tp) * max_tp_num + len(only_min_tp) * min_tp_num + int(non_tp)
-        print("total is ", len(only_max_tp) * max_tp_num, len(only_min_tp) * min_tp_num, int(non_tp),total)
+        # print("total is ", len(only_max_tp) * max_tp_num, len(only_min_tp) * min_tp_num, int(non_tp),total)
         return total
 if __name__ == '__main__':
     print("EURCAD_1h")
